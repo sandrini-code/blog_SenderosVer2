@@ -1,0 +1,20 @@
+
+{% extends "paginasBlog/plantillaPadre.html" %}
+{%load static%}
+{% block title %} Login {%endblock %}
+
+{%block content%}
+
+ <form  method="POST" enctype="multipart/form-data"> {%csrf_token%}
+     <div class="card">
+         <h1 class="card-header" align="center">Login de usuarios</h1>
+
+        <div class="form-label">
+            {{form.as_p}}
+        </div>
+     <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+     </div>
+     </div>
+  </form>
+{%endblock%}

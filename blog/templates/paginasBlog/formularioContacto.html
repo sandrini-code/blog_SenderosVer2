@@ -1,0 +1,36 @@
+
+
+{% extends "paginasBlog/plantillaPadre.html" %}
+{%load static%}
+{% block title %} Contacto {%endblock %}
+
+{%block content%}
+<div class="container">
+<h1 style="color: #fcfffc;" >Contactenos </h1>
+    <p style="color: #fcfffc;">
+
+Dirección: Reserva Educativa Experimental Senderos, General San Martín, Argentina, 3509
+
+    </p>
+    <p  style="color: #fcfffc;">
+Celular: 03725 49-3966
+
+    </p>
+    <p  style="color: #fcfffc;">
+Correo electrónico: kchito_955.s@hotmail.com
+
+    </p>
+    <form action="/contactar/" method="post">{% csrf_token %}
+
+        <p style="color: #fcfffc;">Asunto: <input type="text" class="form-control" name="txtAsunto"/></p>
+
+        <p style="color: #fcfffc;">Email: <input type="email"  class="form-control" name="txtEmail" height="10"/></p>
+        <p style="color: #fcfffc;">
+            Mensaje:
+            <textarea name="txtMensaje" class="form-control" rows="5" cols="30" style="resize: none;"></textarea>
+        </p>
+        <input type="submit" value="Enviar"/>
+
+    </form>
+ </div>
+{%endblock%}

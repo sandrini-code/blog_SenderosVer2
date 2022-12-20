@@ -1,0 +1,40 @@
+{%load static%}
+{% block title %} Publicar Post {%endblock %}
+
+{%block content%}
+<p>hola</p>
+    {%for post in posts%}
+
+    {%if post.imagen%}
+      <p>{{post.titulo}}</p>
+      <p>{{post.resumen}}</p>
+      <p>{{post.texto}}</p>
+      <p>{{post.imagen.url}}</p>
+    <img src='{{post.imagen.url}}' width="100%" />
+
+<div class="container">
+	  <div class="content">
+	    <a class="btn" href="#open-modal">Comparte en tus redes sociales</a>
+	  </div>
+	</div>
+	<div id="open-modal" class="modal-window">
+	  <div>
+	    <a href="#" title="Close" class="modal-close">Close</a>
+	    <h1>¡Hola que tal!</h1>
+	    <div><small>Comparte en tus redes sociales</small></div>
+		    <a href="https://www.facebook.com/sharer/sharer.php?u=https://espai.es" target="_blank">Facebook</a>
+		    <a href="https://twitter.com/intent/tweet?text= escola%20inform%C3%A1tica%20i%20disseny&url=https://espai.es&hashtags=dissenyweb" target="_blank">Twitter</a>
+	    </div>
+	</div>
+
+<a href="https://www.facebook.com/sharer/sharer.php?u=https://espai.es">Comparte en Facebook</a><br>
+
+<a href="https://api.whatsapp.com/send?text=escola%20inform%C3%A1tica%20i%20disseny%20https://espai.es">Compartir en Whatsapp</a><br>
+
+<a href="https://twitter.com/intent/tweet?text= escola%20inform%C3%A1tica%20i%20disseny&url=https://espai.es&hashtags=dissenyweb"> Compartir en twitter</a>
+
+    {%endif%}
+
+  {%endfor%}
+
+{%endblock%}

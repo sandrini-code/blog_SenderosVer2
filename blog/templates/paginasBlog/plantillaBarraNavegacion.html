@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+<head class="item" >
+  <img src='{%static "img/Senderos.png"%}'alt="1" style="width:100%;">
+</head>
+
+    <body style="background-color: rgba(189, 250, 76, 0.582) ; color: #0c0c0c ; ">
+       <nav class="navbar navbar-expand-lg bg-light">
+       <div class="container-fluid">
+          <a class="navbar-brand" href="/">BLOG</a>
+          <button class="navbar-toggler" ba type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/quienesSomos/">Quienes somos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/proyectos/">Proyectos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/servicios/">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/publicaciones/">Publicaciones</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Areas de estudio
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/fauna/">FAUNA</a></li>
+                    <li><a class="dropdown-item" href="/flora/">FLORA</a></li>
+                    <li><a class="dropdown-item" href="/hongos/">HONGOS</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/formularioContacto/">Contactanos</a>
+            </li>
+
+        </ul>
+
+            <ul class="nav justify-content-end">
+                 <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Logueo
+                </a>
+              <ul class="dropdown-menu">
+                     {% if user.is_authenticated %}
+                    <li>Usuario: {{ user.get_username }}</li>
+                    <li><a href="/logout/">Logout</a></li>
+                    {% else %}
+                    <li>Usuario: Invitado</li>
+                     <li><a href="/login/">Login</a></li>
+                    {% endif %}
+              </ul>
+              </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register/">Registro</a>
+                </li>
+                {% if user.is_authenticated and  user.is_staff%}
+                 <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Carga de contenido
+              </a>
+              <ul class="dropdown-menu">
+
+                  <li>
+                       <a class="nav-link" href="/crear_post/">Crear Post</a>
+                  </li>
+
+
+              </ul>
+              </li>
+          {% endif %}
+</ul>
+        </div>
+      </div>
+      </nav>
+  </body>
+</html>

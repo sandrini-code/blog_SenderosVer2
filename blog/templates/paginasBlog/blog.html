@@ -1,0 +1,95 @@
+{% extends "paginasBlog/plantillaPadre.html" %}
+{%load static%}
+{% block title %} BLOG {%endblock %}
+{%block content%}
+
+    <div class="form-group row">
+      <div class="col-xs-4">
+          <form class="row g-3">
+              <div class="col-auto">
+                  <select class="form-control input-solid" name="fecha">
+                    <option selected>Meses</option>
+                    <option>Enero</option>
+                    <option>Febrero</option>
+                    <option>Marzo</option>
+                    <option>Abril</option>
+                    <option>Mayo</option>
+                    <option>Junio</option>
+                    <option>Julio</option>
+                    <option>Agosto</option>
+                    <option>Septiembre</option>
+                    <option>Octubre</option>
+                    <option>Noviembre</option>
+                    <option>Diciembre</option>
+                  </select>
+              </div>
+              <div class="col-auto" >
+                 <button type="submit" class="btn btn-success" value="Click Me" style="float: right;">
+                  Filtrar por mes
+                 </button>
+              </div>
+          </form>
+      </div>
+      <div class="col-xs-4">
+          <form class="row g-3">
+              <div class="col-auto">
+                  <select class="form-control input-solid" name="categoria" >
+                  <option selected>Categorias</option>
+                    {% for categoria in categorias %}
+                  <option>{{categoria.nombre}}</option>
+                    {% endfor %}
+                  </select>
+              </div>
+              <div class="col-auto" >
+                 <button type="submit" class="btn btn-success" value="Click Me" style="float: right;">
+                  Filtrar por categoria
+                 </button>
+              </div>
+           </form>
+      </div>
+      <div class="col-xs-4">
+           <form class="row g-6">
+               <div class="col-auto">
+                    <input type="text" class="form-control"  placeholder="Buscar..." name="buscar">
+               </div>
+               <div class="col-auto" >
+                    <button type="submit" class="btn btn-success" value="Click Me" style="float: right;">
+                    <span class="glyphicon glyphicon-search"></span> Buscar
+                    </button>
+               </div>
+           </form><br>
+
+      </div>
+    </div>
+
+
+
+<div class="container">
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <h1  id="titulo" align="center" >BLOG "Senderos"</h1>
+      </div>
+      <div class="panel-body">
+        <section>
+            <article class="post">
+                {% for post in posts %}
+                     <h2 align="center">{{post.titulo}}</h2>
+                     <p>{{post.resumen}}</p>
+                     <div class="img-container">
+                        <img  src='static/{{post.imagen}}'  width="50%" />
+                     </div>
+                     <p align="center">Creado: {{post.fecha_creacion}}/ Autor: {{post.usuario}}</p>
+                     <a href="{% url 'posteo' post.id %}" class="btn btn-warning">Leer post</a>
+                     <hr>
+                     <div class="text-success">
+                     <hr>
+                     </div>
+                     <hr class="border border-primary border-3 opacity-75">
+                {%endfor%}
+            </article>
+        </section>
+      </div>
+  </div>
+
+</div>
+{%endblock%}

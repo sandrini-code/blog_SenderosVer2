@@ -1,0 +1,50 @@
+{% extends "paginasBlog/plantillaPadre.html" %}
+{%load static%}
+{%load social_share%}
+{% block title %} Post {%endblock %}
+{%block content%}
+<div class="container">
+  <div class="panel panel-default">
+      <div class="panel-body">
+               <div class="post">
+                    <div class="date">
+                        <p>Publicado: {{post.fecha_creacion}}/ Autor: {{post.usuario}}</p>
+                    </div>
+                    <div class="post">
+                        <h2 align="center">{{post.titulo}}</h2>
+                        <p >{{post.resumen}}</p>
+                        <p>{{post.texto|linebreaksbr}}</p>
+                        <img src='/static/{{post.imagen}}' width="50%" />
+                    </div>
+               </div>
+{% if user.is_authenticated %}
+    <div class="form-group">
+         <form method="POST" action="{% url 'comentar' %}">
+            {% csrf_token %}
+            <label for="comment">Realice un comentario:</label>
+            <textarea class="form-control" name="comentario" rows="5" id="comment"></textarea>
+            <input type="text" name="id_post" value="{{post.id}}" hidden="">
+             <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3" value="GUARDAR">Enviar</button>
+             </div>
+             </form>
+    </div>
+{%else%}
+    <p>Para poder comentar este post debe ser usuario <a href="/register/">registrado!!</a></p>
+{% endif %}
+<br>
+<h3>COMENTARIOS</h3>
+{% for com in comentarios %}
+    <strong>FECHA:{{com.fecha}}</strong><br>
+    <strong>USUARIO:{{com.usuario}}</strong><br>
+    <p>{{com.texto}}</p>
+{% endfor %}
+    <a href="/">VOLVER</a>
+    {% post_to_facebook object_or_url "Comparte este post en Facebook"%}
+    {% post_to_twitter object_or_url "Comparte este post en Twitter"%}
+    {% post_to_telegram "Comparte este post en post_to_telegram" object_or_url %}
+      </div>
+  </div>
+</div>
+
+{%endblock%}

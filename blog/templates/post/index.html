@@ -1,0 +1,20 @@
+{% extends "plantillaPadre.html" %}
+{%load static%}
+{% block title %} Posteo {%endblock %}
+
+{%block content%}
+<div>
+<form method="POST" enctype="multipart/form-data">
+{%csrf_token%}
+    <div class="card">
+        <h1 align="center" class="card-header">Posteo</h1>
+        <div class="card-body">
+            {{post_form.as_p}}
+        <button type="submit" class="btn btn-primary btn-round">Guardar</button>
+        <a href="{% url 'crear_post' %}" class="btn btn-danger">Cancelar</a>
+        </div>
+    </div>
+</form>
+</div>
+
+{%endblock%}

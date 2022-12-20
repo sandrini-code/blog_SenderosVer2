@@ -1,0 +1,32 @@
+{% extends "plantillaPadre.html" %}
+{%load static%}
+{% block title %} Regitro {%endblock %}
+
+{%block content%}
+{%if messages%}
+    {%for message in messages%}
+        <div class="notification {{message.tags}}" role="alert">
+            {{message}}
+        </div>
+    {%endfor%}
+{%endif%}<br />
+<br />
+<br />
+<br />
+
+
+ <form  method="POST" enctype="multipart/form-data"> {%csrf_token%}
+     <div class="card">
+         <h1 class="card-header" align="center" >Registro de usuarios</h1>
+        <div class="form-label">
+            {{form.as_p}}
+        </div>
+     <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+     </div>
+     </div>
+  </form>
+
+{%endblock%}
+
+

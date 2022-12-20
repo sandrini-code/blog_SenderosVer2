@@ -1,0 +1,1 @@
+console.log('El documento javascrpt se ha cargado correctamente.');
